@@ -1,0 +1,81 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <!-- https://getbootstrap.com/docs/4.0/getting-started/introduction/#starter-template -->
+
+    <!-- Bootstrap CSS -->
+      <!--- Incorporates the stylesheet for bootstrap and links the csssheet file --->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{%static 'Argupedia/csssheet.css' %}">
+          <!--- displays the title that appears in the top part of the web browser showing Argupedia --->
+        <title>Argupedia</title>
+
+</head>
+<bone>
+      <!--- navigation bar at the top to allow for ease of navigating   --->
+      <nav class="navbar navbar-expand-md navbar-dark kings fixed-top">
+         <!--- application name --->
+          <a class="navbar-brand mr-4" href="/">Argupedia</a>
+            <!--- toggles navigation specifies the hover over functionality --->
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarToggle">
+            <div class="navbar-nav mr-auto">
+                <!--- defines the home page link --->
+              <a class="nav-item nav-link" href="{% url 'arg-about' %}">Home</a>
+            </div>
+              <!--- checks to see if the user is authenticated and displays the relevant information--->
+            <div class="navbar-nav">
+                {% if user.is_authenticated %}
+                <!--- displays the nav link for argument scheme creation --->
+                    <a class="nav-item nav-link" href="{% url 'Arg-scheme' pk=100 %}">Create a Debate Topic</a>
+                <!--- navlink for signout --->
+                    <a class="nav-item nav-link" href="{% url 'signout' %}">Sign Out</a>
+                <!--- navlink for profile  --->
+                     <a class="nav-item nav-link" href="{% url 'profile' %}">{{user.username}}</a>
+                <!--- displays profile picture for each person. --->
+                     <img class="rounded-circle article-img" src="{{ user.argprofile.pict.url }}" width ="40" height="40">
+                {% else %}
+                <!--- displays sign in link --->
+                    <a class="nav-item nav-link" href="{% url 'signin' %}">Sign In</a>
+                <!--- displays sign up link--->
+                    <a class="nav-item nav-link" href="{% url 'register' %}">Sign up</a>
+                {% endif %}
+            </div>
+          </div>
+
+      </nav>
+<!--- creation of the sidepanel--->
+    <main role="main" class="container">
+      <div class="row">
+
+        <div class="col-lg-8">
+          {% block content %}{% endblock %}
+        </div>
+        <div class="col-lg-4">
+          <div class="buff">
+              <!--- displays the links to each page --->
+            <font>Relevant Information</font>
+              <ul class="list-group">
+                <a class="list-group-item list-group-item-light" href="{% url 'argupedia-home' %}">View Debates</a>
+                <a class="list-group-item list-group-item-light ayy" href="{% url 'contact-info' %}">Contact Information</a>
+                <a class="list-group-item list-group-item-light" href="{% url 'arg-home' %}">Latest Announcement</a>
+                <a class="list-group-item list-group-item-light" href="{% url 'future-home' %}">Future Plans</a>
+                <a class="list-group-item list-group-item-light" href="{% url 'guidance' %}">Guidance</a>
+                <a class="list-group-item list-group-item-light" href="{% url 'FAQ' %}">FAQ's</a>
+                <a class="list-group-item list-group-item-light" href="{% url 'reports' %}">Statistical Reports</a>
+
+                  <a class="list-group-item list-group-item-light" href="{% url 'Rules' %}">Terms and Conditions</a>
+
+              </ul>
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+</bone>
+</html>

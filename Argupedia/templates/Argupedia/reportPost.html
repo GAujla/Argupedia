@@ -1,0 +1,144 @@
+{% extends "Argupedia/base.html" %}
+{% block content %}
+{% load crispy_forms_tags %}
+  <font face=" Impact " size="10px" color="#D02A06">Report Page</font>
+<button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal" style="margin-left: 445px;">?</button>
+<!-- Medium Class prefix-->
+<div class="col-md-15">
+    <!-- Specifying content-section-->
+    <div class="buff">
+
+
+        <p></p>
+        <p>Hi {{request.user.username}} were sorry to here that you have encountered a topic that has made you feel upset, please fill in the report below so we can inspect and deal with the post/comment in question</p>
+        <p> Many Thanks - The Argupedia Team</p>
+
+
+
+
+<!-- Medium Class prefix-->
+
+  <form method="post">
+    {% csrf_token %}
+      <!-- gets the report information-->
+    <font face=" Impact " size="6px" color="#D02A06"> Report Made By: {{request.user.username}} </font>
+<!-- displays username field of the report and char remaning-->
+    <div class="form-group">
+      <label for="user_reporting" class="col-form-label-lg" >Username:</label>
+      <textarea name='user_reporting' id="user_reporting" class="form-control" maxlength="255" required></textarea>
+      <div id="user_reporting-remaining-chars" >255 characters remaining</div>
+    </div>
+
+<!-- displays user being reported field of the report and char remaining-->
+
+    <div class="form-group">
+        <label for="user_reported" class="col-form-label-lg" >Which User/Post are you reporting?</label>
+        <textarea name='user_reported' id="user_reported" class="form-control" maxlength="255" required></textarea>
+        <div id="user_reported-remaining-chars" >255 characters remaining</div>
+
+    </div>
+
+<!-- displays why is the report taking place  field of the report and char remaining-->
+    <div class="form-group">
+      <label for="formGroupExampleInput2" class="col-form-label-lg">Why is the report taking place?</label>
+        <textarea name='reason' id="reason" class="form-control" maxlength="255" required></textarea>
+       <div id="reason-remaining-chars" >255 characters remaining</div>
+    </div>
+<!-- displays url link of the report and char remaining-->
+    <div class="form-group">
+      <label for="formGroupExampleInput3" class="col-form-label-lg">URL link to the issue in question</label>
+        <textarea name='urllink' id="urllink" class="form-control" maxlength="255" required></textarea>
+       <div id="urllink-remaining-chars" >255 characters remaining</div>
+    </div>
+
+
+    <div class="col-auto">
+      <button type="submit" class="btn btn-danger ">Submit</button>
+    </div>
+  </form>
+    </div>
+</div>
+
+<!-- javascript getting the information and do char minus functionality for each box-->
+         <script>
+          const user_reporting = document.getElementById('user_reporting');
+          const charsleft = document.getElementById("user_reporting-remaining-chars");
+          const user_reported = document.getElementById('user_reported');
+          const charslefts = document.getElementById("user_reported-remaining-chars");
+          const reason = document.getElementById('reason');
+          const charlefts = document.getElementById("reason-remaining-chars");
+          const urllink = document.getElementById('urllink');
+          const charleft= document.getElementById("urllink-remaining-chars");
+          const MAX_CHARS = 255;
+
+          user_reporting.addEventListener('input',() => {
+
+          const left = MAX_CHARS - user_reporting.value.length;
+          const style = left < MAX_CHARS * 0.2 ? 'crimson' : null;
+
+          charsleft.textContent = `${left} characters remaining`;
+          charsleft.style.color = style;
+
+          });
+          user_reported.addEventListener('input',() => {
+
+          const lefts = MAX_CHARS - user_reported.value.length;
+          const styles = lefts < MAX_CHARS * 0.2 ? 'crimson' : null;
+
+          charslefts.textContent = `${lefts} characters remaining`;
+          charslefts.style.color = styles
+
+          });
+          reason.addEventListener('input',() => {
+
+          const rem = MAX_CHARS - reason.value.length;
+          const sty = rem < MAX_CHARS * 0.2 ? 'crimson' : null;
+
+          charlefts.textContent = `${rem} characters remaining`;
+          charlefts.style.color = sty
+          });
+
+          urllink.addEventListener('input',() => {
+
+          const rema = MAX_CHARS - urllink.value.length;
+          const styl = rema < MAX_CHARS * 0.2 ? 'crimson' : null;
+
+          charleft.textContent = `${rema} characters remaining`;
+          charleft.style.color = styl
+          });
+
+      </script>
+<!-- welcome modal defined-->
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title">Welcome!</h2>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span>X</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>This page will inform you regarding any new recent updates that have been to the Argupedia web application</p>
+                    <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+{% endblock content %}
+
+

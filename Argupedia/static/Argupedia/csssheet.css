@@ -1,0 +1,391 @@
+body {
+  margin-top: 6rem;
+  background: #fbfbfb;
+
+}
+
+.kings {
+  background-color: #cc0000;
+}
+
+.buff {
+  background: #ffffff;
+  padding: 11px 21px;
+  margin-bottom: 14px;
+  border: 1px solid #000000;
+}
+
+.article-content {
+  white-space: pre-line;
+}
+.format-nice {
+  white-space: pre-line;
+}
+
+
+.article-metadata {
+  padding-bottom: 1px;
+  margin-bottom: 4px;
+  border-bottom: 1px solid #e3e3e3
+}
+
+
+.midfield {
+margin: auto;
+}
+
+.optgroup {
+ font-size:40px;
+ }
+
+/* Version Button */
+
+ayy:active {
+  background-color: yellow;
+}
+
+.section-1 {
+    position: absolute;
+    top:-89px;
+
+   border:none;
+   background-color:transparent;
+   outline:none;
+   color: #0000FF;
+
+}
+
+
+.section-2 {
+    position: absolute;
+    top:95px;
+
+   border:none;
+   background-color:transparent;
+   outline:none;
+   color: #0000FF;
+
+}
+
+.section-3 {
+    position: absolute;
+    top: -53px;
+
+   border:none;
+   background-color:transparent;
+   outline:none;
+   color: #0000FF;
+
+}
+.section-4 {
+    position: absolute;
+    top: -19px;
+   border:none;
+   background-color:transparent;
+   outline:none;
+   color: #0000FF;
+
+}
+.section-5 {
+    position: absolute;
+    top: 20px;
+
+   border:none;
+   background-color:transparent;
+   outline:none;
+   color: #0000FF;
+
+}
+.section-6 {
+    position: absolute;
+    top: 57px;
+
+   border:none;
+   background-color:transparent;
+   outline:none;
+   color: #0000FF;
+
+}
+.section-7 {
+    position: absolute;
+    top: 133px;
+
+   border:none;
+   background-color:transparent;
+   outline:none;
+   color: #0000FF;
+
+}
+.section-8 {
+    position: absolute;
+    top: 169px;
+
+   border:none;
+   background-color:transparent;
+   outline:none;
+   color: #0000FF;
+
+}
+.section-9 {
+    position: absolute;
+    top: 207px;
+
+   border:none;
+   background-color:transparent;
+   outline:none;
+   color: #0000FF;
+
+}
+.section-10 {
+    position: absolute;
+    top: 242px;
+
+   border:none;
+   background-color:transparent;
+   outline:none;
+   color: #0000FF;
+
+}
+.section-11 {
+    position: absolute;
+    top: 280px;
+
+   border:none;
+   background-color:transparent;
+   outline:none;
+   color: #0000FF;
+
+}
+.section-12 {
+    position: absolute;
+    top: 317px;
+
+   border:none;
+   background-color:transparent;
+   outline:none;
+   color: #0000FF;
+
+}
+.section-13 {
+    position: absolute;
+    top: 354px;
+
+   border:none;
+   background-color:transparent;
+   outline:none;
+   color: #0000FF;
+
+}
+.section-c1 {
+    position: absolute;
+    top:45px;
+    left: 20px;
+   border:none;
+   background-color:transparent;
+   outline:none;
+   color: #0000FF;
+
+}
+
+
+.section-c2 {
+    position: absolute;
+    top:82px;
+    left: 20px;
+   border:none;
+   background-color:transparent;
+   outline:none;
+   color: #0000FF;
+
+}
+
+.section-c3 {
+    position: absolute;
+    top: 115px;
+    left: 20px;
+   border:none;
+   background-color:transparent;
+   outline:none;
+   color: #0000FF;
+
+}
+.section-c4 {
+    position: absolute;
+    top: 155px;
+    left: 20px;
+   border:none;
+   background-color:transparent;
+   outline:none;
+   color: #0000FF;
+
+}
+.section-c5 {
+    position: absolute;
+    top: 190px;
+     left: 20px;
+   border:none;
+   background-color:transparent;
+   outline:none;
+   color: #0000FF;
+
+}
+.section-c6 {
+    position: absolute;
+    top: 228px;
+     left: 20px;
+   border:none;
+   background-color:transparent;
+   outline:none;
+   color: #0000FF;
+
+}
+.section-c7 {
+    position: absolute;
+    top: 265px;
+     left: 20px;
+   border:none;
+   background-color:transparent;
+   outline:none;
+   color: #0000FF;
+
+}
+.section-c8 {
+    position: absolute;
+    top: 302px;
+     left: 20px;
+   border:none;
+   background-color:transparent;
+   outline:none;
+   color: #0000FF;
+
+}
+.section-c9 {
+    position: absolute;
+    top: 337px;
+     left: 20px;
+   border:none;
+   background-color:transparent;
+   outline:none;
+   color: #0000FF;
+
+}
+.section-c10 {
+    position: absolute;
+    top: 375px;
+     left: 20px;
+   border:none;
+   background-color:transparent;
+   outline:none;
+   color: #0000FF;
+
+}
+.section-c11 {
+    position: absolute;
+    top: 410px;
+     left: 20px;
+   border:none;
+   background-color:transparent;
+   outline:none;
+   color: #0000FF;
+
+}
+.section-c12 {
+    position: absolute;
+    top: 448px;
+     left: 20px;
+   border:none;
+   background-color:transparent;
+   outline:none;
+   color: #0000FF;
+
+}
+.section-c13 {
+    position: absolute;
+    top: 485px;
+     left: 20px;
+   border:none;
+   background-color:transparent;
+   outline:none;
+   color: #0000FF;
+
+}
+
+/*https://www.youtube.com/watch?v=dPLHi7tsoFU*/
+.accordion{
+    width: 600px;
+}
+
+.accordion .contentBx {
+    position: relative;
+    margin: 10px 20px;
+
+}
+
+.accordion .contentBx .labels{
+    position: relative;
+    padding: 10px;
+    background: #cc0000;
+    color: #e6e6e6;
+    cursor: pointer;
+}
+
+.accordion .contentBx .labels::before{
+    content: '+';
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    font-size: 1.5em;
+}
+
+.accordion .contentBx .contentss{
+    position: relative;
+    background: #e6e6e6;
+    height: 0;
+    overflow: hidden;
+    transition: 0.5s;
+    overflow-y: auto;
+}
+
+.accordion .contentBx.active .contentss{
+    height: 150px;
+    padding: 10px;
+
+}
+
+.legendwin{
+    width: 20px;
+    height: 20px;
+    background-color: #00ff55;
+}
+.legendlose{
+    width: 20px;
+    height: 20px;
+    background-color: #ff0400;
+}
+.legendundec{
+    width: 20px;
+    height: 20px;
+    background-color: #bfbfbf;
+}
+
+.terms__heading {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.4
+}
+
+
+
+
+.link {
+        stroke: #777;
+        stroke-width: 2px;
+
+}
+.theList {
+    text-align: right;
+    list-style-position: inside;
+}
+
+

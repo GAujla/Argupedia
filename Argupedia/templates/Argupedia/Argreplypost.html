@@ -1,0 +1,83 @@
+{% extends 'Argupedia/base.html' %}
+{% block content %}
+<!-- form action as a request will be used, the scheme and userinput and critical questions id will be used in order to show which post it correlates too -->
+<form action="{% url 'reply-view' pk=sch reply=userput.id cqs_id=cqs_id %}"
+              method="POST">
+            {% csrf_token %}
+            <div>
+                <!-- defines the font specification -->
+                <font face=" Impact " size="10px" color="#D02A06" > Argument Reply</font>
+            </div>
+            <div>
+                <font>Critical Question</font>
+            </div>
+                <div>
+                    <!-- defines the critical question id-->
+                    <select  class="buff" id="attackc" name="attackc" style="font-size : 9px;" required>
+                        <option  value="">Select</option>
+                        <!-- for loops of the critiqal questions and displays them -->
+                        {% for cq in weakp %}
+                        {% if weakp == "" %}
+                        <a></a>
+                        {% else %}
+                            <option value="{{cq.id}}">{{cq.CQ}}</option>
+                         {% endif %}
+                        {% endfor %}
+                    </select>
+                </div>
+        <!-- for loops over the argument fields that have been selected-->
+                {% for arg in details %}
+                {% if details == "" %}
+                <a></a>
+                {% else %}
+                <a></a>
+
+                <font>{{ arg.Argument_field_name }}:</font>
+                <div >
+                    <!-- defines the id of the fields and the placeholder to show the user how to male the arguments -->
+                    <textarea rows="10" class="buff" name="{{ arg.Argument_field_name }}" id="{{ arg.Argument_field_name }}"  placeholder="{{ arg.Argument_field }}" maxlength="255"required></textarea>
+                     <div id="Arg.construct-remaining-chars" >255 characters remaining</div>
+                </div>
+<script>
+    var input = document.getElementsByTagName("arg.Argument_field_name ");
+    var j = 0;
+
+    for (var i = 0; i < input.length; i++) {
+      if (input[i].type == "text") {
+        input[i].value = ++j;
+      }
+    }
+</script>
+   <script>
+       // JS functionality for character limitation, gets the class and ID
+      const debate = document.getElementById("{{ arg.Argument_field_name }}");
+      const charsleft = document.getElementById("Arg.construct-remaining-chars");
+        // limits the characters to 255
+      const MAX_CHARS = 255;
+        // eventlistner input
+      debate.addEventListener('input',() => {
+        // notifies the user when 20 percent characters left by turning text red
+      const left = MAX_CHARS - debate.value.length;
+      const style = left < MAX_CHARS * 0.2 ? 'crimson' : null;
+
+      charsleft.textContent = `${left} characters remaining`;
+      charsleft.style.color = style;
+
+      })
+
+
+  </script>
+        {% endif %}
+        {% endfor %}
+<!-- submit button formatted-->
+    <button class="btn btn-outline-danger" type="submit">Submit Post</button>
+
+
+</form>
+
+{% endblock %}
+
+
+
+
+

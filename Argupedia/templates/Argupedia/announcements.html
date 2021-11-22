@@ -1,0 +1,66 @@
+{% extends "Argupedia/base.html" %}
+
+
+<!--- https://docs.djangoproject.com/en/3.2/topics/i18n/timezones/ --->
+{% block content %}
+ <!--Font specification-->
+<font face=" Impact " size="10px" color="#D02A06" > Latest Announcements</font>
+<button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal" style="margin-left: 240px">?</button>
+ <!--For lopping over the items that will be displayed for latest announcements-->
+    {% for debate in debates %}
+ <!--article format used to structure the visual aspect-->
+          <div class="buff">
+               <!--Formatting specification-->
+            <div class="form-group">
+                 <!--Specifies the author of the post -->
+                <img class="rounded-circle article-img" src="{{ debate.author.argprofile.pict.url }}" width ="40" height="40">
+              <a>{{ debate.author }}</a>
+                 <!--Specifies the date and time of the post creates-->
+              <small>{{ debate.arg_date_posted|date:"F d, Y fA" }}</small>
+            </div>
+               <!--Specifies the announcements-->
+            <h2><a> {{ debate.announcement }}</a></h2>
+              <!--Specifies the details of the debate -->
+            <p class="format-nice">{{ debate.arg_content }}</p>
+          </div>
+ <!--Specifies the modal Id -->
+<!--Modal fade ensures the box becomes highlighted -->
+ <div class="modal fade" id="myModal">
+     <!--Specifies the modal class-->
+        <div class="modal-dialog">
+              <!--Specifies the modal content-->
+            <div class="modal-content">
+                     <!--Specifies the modal title div-->
+                <div class="modal-header">
+                        <!--Specifies the latest announcement-->
+                    <h2 class="modal-title">Latest Announcements!</h2>
+                    <!--Specifies the latest announcement-->
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span>X</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                     <!--Specifies the modal information-->
+                    <p>This page will inform you regarding any new recent updates that have been added to the Argupedia web application.</p>
+                    <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+ <!--Scripts and sources-->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+    {% endfor %}
+{% endblock content %}

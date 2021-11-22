@@ -1,0 +1,74 @@
+{% extends "Argupedia/base.html" %}
+{% block content %}
+<font face=" Impact " size="10px" color="#D02A06" > Welcome To Argupedia</font>
+<button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal" style="margin-left: 235px;">?</button>
+<!-- Medium Class prefix-->
+<div class="col-md-15">
+    <!-- Specifying content-sectiom-->
+    <div class="buff">
+        <!--information enetered-->
+
+        <p class='text-muted'>Argupedia is a concept proposed by Senior Lecturer and Reader in Artificial Intelligence
+        Sanjay Modgil. In Modern day we often see hundreds of Millions of users take to online platforms to discuss and debate
+        regarding contemporary topics and issues, however the issue is there is no formal structure and no formal evaluation
+        of what arguments are currently winning the debate. This can cause  harmful issues such as users
+        not reading the full context of debates and deriving false conclusions. The idea of Argupedia is that users will
+            be able to contribute to an ever-growing repository of debate and opinion, where the data entry has to be
+        structured so as to conform to templates that capture various forms of argument and counter-argument.
+        The arguments are then evaluated using Dungs Grounded semantics and Camindas labelling algorithm .
+        <p class='text-muted'>For More additional information relating to Argupedia
+        and the field of Argumentation see the links below:
+        <!-- Displays links that can be accessed within web page-->
+        <!-- https://www.w3schools.com/html/html_links.asp learnt how to navigate other web links-->
+
+        <ul class="list-group">
+        <!--links to sources-->
+        <a class="list-group-item nav-item nav-link list-group-item-light" href="http://www.sci.brooklyn.cuny.edu/~parsons/courses/7412-fall-2011/papers/caminada-intro.pdf" target="_blank" rel="noopener noreferrer ">Gentle Introduction to Argupedia</a>
+        <a class="list-group-item nav-item nav-link list-group-item-light" href="https://www.sciencedirect.com/science/article/pii/000437029400041X" target="_blank" rel="noopener noreferrer ">Phan Minh Dung - On the acceptability of arguments and its fundamental role in nonmonotonic reasoning, logic programming and n-person games</a>
+        <a class="list-group-item nav-item nav-link list-group-item-light" href="https://www.aaai.org/Papers/AAAI/2007/AAAI07-004.pdf" target="_blank" rel="noopener noreferrer ">Action Schemes and Critical Questions</a>
+    </ul>
+        </p>
+    </div>
+</div>
+    <div class="modal fade" id="myModal">
+        <!--Modal information-->
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!--Modal content-->
+                <div class="modal-header">
+                     <!--Modal headert-->
+                    <h2 class="modal-title">Welcome!</h2>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span>X</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                     <!--Modal information-->
+                    <p>Welcome to Argupedia! To gain a better understanding of the application please read the welcome text below and visit the following links!</p>
+                    <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+{% endblock content %}

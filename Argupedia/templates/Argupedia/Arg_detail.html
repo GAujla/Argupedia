@@ -1,0 +1,118 @@
+<!--Draws from the Argupedia base HTML file-->
+{% extends 'Argupedia/base.html' %}
+<ul class="entry" style="padding-left: 38px;">
+<!-- Begins block content -->
+{% block content %}
+    <div  class="row justify-content-center" style="color: #ff0000; font-size: 50px;">
+        {{argtopic}}
+    </div>
+  <div  class="row justify-content-center" style=" font-size: 20px;">
+      The Category is:  <strong>{{argfield}}</strong>
+    </div>
+
+
+
+
+
+ <!--recurse tree used https://django-mptt.readthedocs.io/en/latest/templates.html-->
+{% load mptt_tags %}
+{% recursetree participant %}
+ <!--loops through and displays the critixal questions -->
+        {% for cq in cat %}
+        {% if cqs == "" %}
+        <a></a>
+        {% else %}
+            <option value="{{cq.id}}">{{cq.cat}} </option>
+            pk_debate
+        {% endif %}
+        {% endfor %}
+    </select>
+
+    <!-- https://django-mptt.readthedocs.io/en/latest/templates.html  -->
+<div class="buff">
+    <!-- defined as argument information, defined as the node.pk as this
+    is defined when using the recursetree -->
+<a class="form-group" id="{{ node.pk }}"></a>
+
+
+    <!-- defines the user profile picture and width and height  -->
+    <img class="rounded-circle article-img" src="{{ node.argupedia_user.argprofile.pict.url }}" width ="80" height="80">
+        {{ node.argupedia_user.username }}
+
+            <!-- Displays The Date created  -->
+<small>{{node.arg_date|date:"F d, Y fA"}}</small>
+    <!-- Displays the content information  -->
+    <div>
+        {% if node.cqs == None %}
+        <a></a>
+        {% else %}
+            {{node.cqs}}
+        {% endif %}
+
+
+
+    </div>
+    <div>
+         <!--displaus the debate id-->
+        Argument Id: {{node.pk}}
+    </div>
+    <!--displays the information of the node and font style-->
+    <div  id="information{{node.pk}}" class="entry-content" value="{{node.pk}}" style="margin-left: 5px; font-size: 24px;" >{{node.information}}</div>
+
+            <!-- Displays The reply button and links url to Argument scheme creation page  -->
+<a  href="{% url 'reportpost'  %}" class="btn btn btn-outline-danger" value="{{node.pk}}" style="">Report</a>
+    <a  href="{% url 'Arg-counter' node.pk %}" class="btn btn btn-outline-danger" value="{{node.pk}}" style="">Reply</a>
+
+
+<div>
+    <!--if statement to confirm that if the user is authenticated that they
+     can only view the likes and dislikes as we dont want users who dont
+     have a profile to like and dislike the posts -->
+{% if user.is_authenticated %}
+<!-- shows the upvote action of the user  -->
+<form style="margin-top: 20px" method ="POST" action="{% url 'voteup' node.pk %}">
+    {% csrf_token %}
+    <input type="hidden" name="next" value="{{ request.path }}">
+    <button type="submit">
+        <!-- counts the number of upvotes displayed  -->
+       <i class=" fa fa-thumbs-up" > <span>{{ node.voteup.all.count }}</span></i>
+    </button>
+    <!-- reply button for the user to reply to the posts made -->
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</form>
+    <!-- downvote button specifying the post it relates to -->
+<form method ="POST" action="{% url 'votedown' node.pk %}">
+    {% csrf_token %}
+    <!-- submits it  -->
+    <input type="hidden" name="next" value="{{ request.path }}">
+    <button type="submit">
+        <!-- downvote counts it all -->
+       <i class=" fa fa-thumbs-down" > <span>{{ node.votedown.all.count }}</span></i>
+    </button>
+</form>
+{% endif %}
+
+</div>
+
+</div>
+
+    <!-- displays the replies of the posts  -->
+
+{% if not node.is_leaf_node %}
+    <ul  style="padding-left: 23.5px">
+        <!--displays indent of the replies to show which reply is to which-->
+        {{ children }}
+    </ul>
+{% endif %}
+
+{% endrecursetree %}
+     <!--displays the a link for the grounded semantics-->
+        <a href="{% url 'grounded-sem' grounded %}" class="btn btn btn-outline-danger">Grounded Semantics</a>
+
+
+
+
+
+{% endblock %}
+

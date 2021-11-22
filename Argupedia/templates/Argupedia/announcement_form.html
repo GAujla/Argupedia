@@ -1,0 +1,22 @@
+{% extends "Argupedia/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<!-- specifies the design used-->
+   <div class="buff">
+       <!--post action that is used to post the announcements-->
+       <form method="POST">
+            {% csrf_token %}
+           <fieldset class="form-group">
+               <!-- crispy forms -->
+               {{ form|crispy }}
+           </fieldset>
+           <!-- format used to ensure it is visually appealing-->
+           <div class ="form-group">
+               <!-- submit button format-->
+               <button class="btn btn-outline-danger" type="submit">Submit Post
+               </button>
+           </div>
+
+   </div>
+{% endblock %}
+

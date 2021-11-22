@@ -1,0 +1,58 @@
+{% extends "Argupedia/base.html" %}
+{% block content %}
+
+<font face=" Impact " size="10px" color="#D02A06" > Reports Page</font>
+ <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal" style="margin-left: 419px">?</button>
+<!-- Medium Class prefix-->
+<div class="col-md-15">
+    <!-- Specifying content-sectiom-->
+    <div class="buff">
+         <!-- displays the information from the views-->
+
+        <p >Number of Users signed up this month:
+            {{user_count}}</p>
+        <p >Number of Posts and replies Made this month: {{post_count}}</p>
+        <p >Most Active Users: {{pop_user}}</p>
+        <p >Users Joined Today: {{qs}}</p>
+        <p >Most Popular Cateogories: {{pop_topic}}</p>
+    </div>
+</div>
+
+
+
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog">
+            <!-- modal content-->
+            <div class="modal-content">
+                <!-- modal header-->
+                <div class="modal-header">
+                    <!-- modal header-->
+                    <h2 class="modal-title">Reports Statisitcs Page!</h2>
+                    <!-- modal close-->
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span>X</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                     <!-- modal information-->
+                    <p>This page details the specific reports related to Argupedia conveying useful information.</p>
+
+                    <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+{% endblock content %}

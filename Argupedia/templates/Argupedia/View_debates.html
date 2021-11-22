@@ -1,0 +1,77 @@
+{% extends "Argupedia/base.html" %}
+{% load static %}
+{% block content %}
+
+
+
+
+<font class="midfield"  face=" Impact " size="10px" color="#D02A06"> Argupedia Discussions</font>
+<button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal" style="margin-left: 235px">?</button>
+    <!-- For Loop looping over the view page displaying the
+      title, creation date and author name-->
+{% for arg in debate_cases %}
+{% if arg.argupedia_topic == "" %}
+<a></a>
+{% else %}
+<!-- defines the template used x-->
+ <article class="media buff">
+     <div class="media-bone">
+         <div class="article-metadata">
+             <!-- defines the user -->
+              <img class="rounded-circle article-img" src="{{ arg.argupedia_user.argprofile.pict.url }}" width ="40" height="40">
+
+             <a class="mr-2" >{{ arg.argupedia_user }}</a>
+             <!-- defines the date that is being used -->
+             <small>{{ arg.arg_date|date:"F d, Y fA" }}</small>
+         </div>
+   <div   style=" font-size: 15px;">
+      Category:  <strong>{{ arg.Categories}}</strong>
+    </div>
+         <!-- defines the post detail and title -->
+         <a class="article-title" style="margin: 0 auto" href="{% url 'debate-view' arg.pk %}"> {{ arg.argupedia_topic }} <a>
+     </div>
+ </article>
+
+
+{% endif %}
+{% endfor %}
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog">
+            <!-- modal content-->
+            <div class="modal-content">
+                <!-- modal header-->
+                <div class="modal-header">
+                    <!-- modal header-->
+                    <h2 class="modal-title">Discussion Page!</h2>
+                    <!-- modal close-->
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span>X</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                     <!-- modal information-->
+                    <p>This page displays all the arguments created in Argupedia, from here you can see the title, who created it, when they created it and the Category it falls into.</p>
+
+                    <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+
+
+{%endblock%}
+
+

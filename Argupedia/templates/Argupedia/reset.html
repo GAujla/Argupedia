@@ -1,0 +1,14 @@
+{% extends "Argupedia/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+ <!--defines the css function of the class-->
+    <div class="buff">
+         <!--POST request-->
+        <form method="POST">
+            {% csrf_token %}
+                <legend class="border-bottom ">Reset Password</legend>
+                {{ form|crispy }}
+                <button class="btn btn-outline-danger" type="submit">Request Password Reset</button>
+        </form>
+    </div>
+{% endblock content %}

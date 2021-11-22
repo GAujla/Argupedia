@@ -1,0 +1,71 @@
+{% extends "Argupedia/base.html" %}
+{% block content %}
+<!-- Medium Class prefix-->
+<font face=" Impact " size="10px" color="#D02A06" > Argupedia Guidance</font>
+ <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal" style="margin-left: 290px">?</button>
+<div class="col-md-15">
+
+
+    <!-- Specifying content-sectio-->
+    <div class="buff">
+        <!--information specified-->
+        <p>If you have any trouble or queries regarding how to operate/navigate through Argupedia. Please watch the video shown below. The video will provide details on how to do the following:</p>
+
+
+
+        <ul>
+            <!--information specified in list format-->
+            <li>Create An Argument</li>
+            <li>Respond To An Argument</li>
+            <li>Like and Dislike a Post</li>
+            <li>How To Visualise The Debate</li>
+        </ul>
+<!--loops over the guidance videos -->
+        {% for x in guidance_video  %}
+        <video class="embed-responsive embed-responsive-4by3" controls="controls" >
+            <source src="{{x.video.url}}" type="video/mp4"/>
+        </video>
+
+        {% endfor %}
+
+
+
+        <!-- Displays links that can be accessed within web page-->
+        <!-- https://www.w3schools.com/html/html_links.asp learnt how to navigate other web links-->
+
+
+    </div>
+</div>
+<!-- modal fade functionality-->
+   <div class="modal fade" id="myModal">
+        <div class="modal-dialog">
+            <!-- modal content-->
+            <div class="modal-content">
+                 <!-- modal header-->
+                <div class="modal-header">
+                      <!-- modal guidance page-->
+                    <h2 class="modal-title">Guidance Page!</h2>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span>X</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>This page displays a video tutorial showing how to create a debate in Argupedia.</p>
+                    <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+{% endblock content %}

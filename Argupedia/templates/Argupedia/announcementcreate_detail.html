@@ -1,0 +1,20 @@
+{% extends "Argupedia/base.html" %}
+<!--- https://docs.djangoproject.com/en/3.2/topics/i18n/timezones/ --->
+{% block content %}
+
+        <article class="media buff">
+          <div class="media-bone">
+            <div class="article-metadata">
+                <!-- specifies author-->
+              <a class="mr-2" href="#">{{ object.author }}</a>
+                <!-- specifies date posted-->
+              <small class="text-muted">{{ object.arg_date_posted|date:"F d, Y fA" }}</small>
+            </div>
+              <!-- specifies debate title-->
+            <h2> {{ object.arg_debate_title }} </h2>
+              <!-- specifies the content-->
+            <p >{{ object.arg_content }}</p>
+          </div>
+        </article>
+{% endblock content %}
+

@@ -1,0 +1,126 @@
+{% extends "Argupedia/base.html" %}
+{% block content %}
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <title>FAQ's</title>
+    <!--  https://www.w3schools.com/howto/howto_js_accordion.asp -->
+    <!--  https://ionic.io/ionicons/usage -->
+    <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+
+</head>
+<body>
+<!--  font size specified -->
+    <font face=" Impact " size="10px" color="#D02A06" > FAQ's</font>
+<!--  creates modal button -->
+        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal" style="margin-left: 585px;">?</button>
+<div class="buff">
+    <div class="accordion">
+        <!--  accordian class to display question and drop down answer -->
+        <div class="contentBx">
+            <div class="labels">How do I reset my password?</div>
+            <!--  click on to shown -->
+                <i class-="icon ion-md-add"></i>
+            <!-- click on to remove -->
+                <i class-="icon ion-md-remove"></i>
+            <div class="contentss">
+                <p>
+                    This can be done by either navigating to your profile page
+                and click on the request password button, alternatively you can navigate
+                to the sign in page and click the reset password button there.</p>
+
+            </div>
+        </div>
+
+        <div class="contentBx" style="margin-bottom: 10px;">
+            <div class="labels">How do I create a Debate?</div>
+            <!--  click on to shown -->
+            <!--  displays answers -->
+            <div class="contentss">
+                <p>
+                    To begin the debate process click the Create Debate button on the navigation bar and follow the process, if you get stuck click on the Modals on the page, else go to the guidance page and watch the video there.</p>
+            </div>
+        </div>
+                <div class="contentBx" style="margin-bottom: 10px;">
+           <!--  click on to shown -->
+            <!--  displays answers -->
+            <div class="labels">How do I make changes to my profile?</div>
+            <div class="contentss">
+                <p>
+                    Click on your username in the navigation bar, from there you can make relevant changes and click the "changes" button to confirm the changes made.</p>
+            </div>
+        </div>
+                <div class="contentBx" style="margin-bottom: 10px;">
+           <!--  click on to shown -->
+            <!--  displays answers -->
+            <div class="labels">How do I contact the admin team about an issue?</div>
+            <div class="contentss">
+                <p>
+                    Click on the contact information in the Side Panel to there you can fill out a form that will be seen by the admin team.</p>
+            </div>
+        </div>
+                <div class="contentBx" style="margin-bottom: 10px;">
+           <!--  click on to shown -->
+            <!--  displays answers -->
+            <div class="labels">How do I report a user?</div>
+            <div class="contentss">
+                <p>
+                    Under each argument is a report button, please click on it and you will be navigated to the reports page, from there fill out the form provided.</p>
+            </div>
+        </div>
+                <div class="contentBx" style="margin-bottom: 10px;">
+           <!--  click on to shown -->
+            <!--  displays answers -->
+            <div class="labels">Are there any further plans for development?</div>
+            <div class="contentss">
+                <p>
+                    Keep an eye out on the Future Plans and Latest Announcement page.</p>
+            </div>
+        </div>
+    </div>
+    </div>
+        <div class="modal fade" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title">FAQ's!</h2>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span>X</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Welcome to the FAQ page, please find the relevant question to your query and click on the + symbol to find the answer to your issue!</p>
+                    <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+           <!--  javascript functionality for accordian, loops over all the accordian by class name and adds a click event listener -->
+
+    const accordion = document.getElementsByClassName
+    ('contentBx');
+           //for loop the length of the accordians
+    for (i = 0; i<accordion.length; i++){
+        // adds on click functionality
+    accordion[i].addEventListener('click',function(){
+    this.classList.toggle('active')
+    })
+}
+</script>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+</body>
+</html>
+{% endblock %}

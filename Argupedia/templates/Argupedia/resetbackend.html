@@ -1,0 +1,14 @@
+{% extends "Argupedia/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+ <!--class defined for design-->
+   <div class="buff">
+        <!--Post request to the server to take the changes into account-->
+       <form method="POST">
+            {% csrf_token %}
+               {{ form|crispy }}
+            <!--Specifies the danger button-->
+               <button class="btn btn-outline-danger" type="submit"> Password Reset</button>
+       </form>
+   </div>
+{% endblock %}

@@ -1,0 +1,398 @@
+{% extends 'Argupedia/base.html' %}
+{% block content %}
+<!-- Font, Size and Color detailing the title information -->
+   <font face=" Impact " size="10px" color="#D02A06"> Argument Schemes</font>
+<!-- displays modal id and name-->
+<button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal" style="margin-left: 305px">?</button>
+<div class="buff">
+
+<p> Welcome to Argupedia, to start the debate click the relevant argument scheme,
+    to help structure your argument</p>
+    <!-- displays modal for each argument scheme and style-->
+        <button  class="section-1" data-toggle="modal" data-target="#expertopinion" style="margin-top: 250px">[?]</button>
+        <button  class="section-2" data-toggle="modal" data-target="#negativeconseq" style="margin-top: 250px">[?]</button>
+        <button  class="section-3" data-toggle="modal" data-target="#popularopinion" style="margin-top: 250px">[?]</button>
+        <button  class="section-4" data-toggle="modal" data-target="#positiontoknow" style="margin-top: 250px">[?]</button>
+        <button  class="section-5" data-toggle="modal" data-target="#analogy" style="margin-top: 250px">[?]</button>
+        <button  class="section-6" data-toggle="modal" data-target="#correlation" style="margin-top: 250px">[?]</button>
+        <button  class="section-7" data-toggle="modal" data-target="#slippery" style="margin-top: 250px">[?]</button>
+        <button  class="section-8" data-toggle="modal" data-target="#sign" style="margin-top: 250px">[?]</button>
+        <button  class="section-9" data-toggle="modal" data-target="#commitment" style="margin-top: 250px">[?]</button>
+        <button  class="section-10" data-toggle="modal" data-target="#inconsistent" style="margin-top: 250px">[?]</button>
+        <button  class="section-11" data-toggle="modal" data-target="#directad" style="margin-top: 250px">[?]</button>
+        <button  class="section-12" data-toggle="modal" data-target="#circumstantial" style="margin-top: 250px">[?]</button>
+        <button  class="section-13" data-toggle="modal" data-target="#verbalclass" style="margin-top: 250px">[?]</button>
+<!-- For Loop Displaying all Argument Scheme Names -->
+{% for Arg in Args %}
+<!-- Button acts as Url when user selects their chosen scheme they
+are taken to the page showing the relevant fields associated with the scheme-->
+    <div class="row justify-content-center" >
+                        <!--generates url id for the debate being created-->
+                    <a href="{% url 'debate-construct' Arg.id %}"
+
+                       style="width: 600px; margin-top: 13px; ; color=#D02A06">
+                        {{ Arg.Argument_Name}}
+</a>
+
+    </div>
+<!-- Button detailing the Argumet Scheme Name -->
+
+{% endfor %}
+
+
+
+
+
+   <div class="modal fade" id="myModal">
+        <!--Modal information-->
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!--Modal content-->
+                <div class="modal-header">
+                     <!--Modal headert-->
+                    <h2 class="modal-title">Scheme Selection!</h2>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span>X</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                     <!--Modal information-->
+                    <p>Hover over the Modals next to the Argument Scheme to view information about the debates. When you have found your desired scheme click on it. </p>
+                    <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <div class="modal fade" id="negativeconseq" >
+
+            <div class="modal-dialog" >
+              <div class="modal-content">
+                <div class="modal-header">
+                    <!-- Modal title  -->
+                  <h5 class="modal-title" >Argument From Positive/Negative Consequences</h5>
+                        <!-- Modal close  -->
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                  <!-- Modal information  -->
+                <div class="modal-body">
+                    <p> The Argument Form Positive/Negative Consequence, is generally used for when we want to know whether to implement some plan or policy but are wondering about the consequences of doing so.</p>
+                    <p> It is structured as the following:</p>
+                    <p> Premise: "Sex education classes lead to increased sexual promiscuity in teenagers. This is bad."</p>
+                    <p> Conclusion: "Sex education classes should not be given to teenagers."</p>
+                </div>
+              </div>
+            </div>
+
+      </div>
+
+    <div class="modal fade" id="expertopinion" >
+
+            <div class="modal-dialog" >
+              <div class="modal-content">
+                <div class="modal-header">
+
+                  <h5 class="modal-title" >Appeal to Expert Opinion</h5>
+
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <p> Appeal to Expert Opinion is used when specialist knowledge is required that is not within our grasp, but maybe within someone else's </p>
+                    <p> It is structured as the following:</p>
+                    <p> Expertise Assumption: "Michael is a PHD lecturer at Kings College London studying the effects of public lockdown restrictions on the number of Covid-19 cases throughout the United Kingdom"</p>
+                    <p> Assertion Premise: "Michael asserts that Lockdowns result in a decrease of Covid-19 cases"</p>
+                    <p> Conclusion: "Lockdowns reduce Covid-19 cases"</p>
+                </div>
+              </div>
+            </div>
+
+      </div>
+
+    <div class="modal fade" id="popularopinion" >
+
+            <div class="modal-dialog" >
+              <div class="modal-content">
+                <div class="modal-header">
+
+                  <h5 class="modal-title" >Appeal to Popular Opinion</h5>
+
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <p> Appeal to Popular Opinion is a general acceptance of a proposition that may count as a reason for believing it to be true. </p>
+                    <p> It is structured as the following:</p>
+                    <p> General Acceptance Premise: "Religious belief is generally accepted as being virtuous"</p>
+                    <p> Presumption Premise: "If most people accept the virtue of religious belief, there is reason for thinking that it may actually be virtuous."</p>
+                    <p> Conclusion: "There is reason for thinking that religious belief is actually virtuous."</p>
+                </div>
+              </div>
+            </div>
+
+      </div>
+    <div class="modal fade" id="positiontoknow" >
+
+            <div class="modal-dialog" >
+              <div class="modal-content">
+                <div class="modal-header">
+
+                  <h5 class="modal-title" >Argument from the Position to Know</h5>
+
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <p> Argument from the Position to Know</p>
+                    <p> It is structured as the following:</p>
+                    <p> Position to Know: "John is a regular at the Italian Restaurant"</p>
+                    <p> Assertion Premise: "John asserts that the Ceaser Salad is the best meal at the restaurant"</p>
+                    <p> Conclusion: "The Ceaser salad is the best meal at the Restaurant."</p>
+                </div>
+              </div>
+            </div>
+
+      </div>
+    <div class="modal fade" id="analogy" >
+
+            <div class="modal-dialog" >
+              <div class="modal-content">
+                <div class="modal-header">
+
+                  <h5 class="modal-title" >Argument from Analogy</h5>
+
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <p> Argument from Analogy is used when we lack familiarity with a particular scenario, but we are familiar with another scenario that seems similar.  </p>
+                    <p> It is structured as the following:</p>
+                    <p> Similarity Premise:  "The relationship between a parent and child can be said to be similar between citizen and state" </p>
+                    <p> Base Premise: "Parents can impose any riles they like on their children" </p>
+                    <p> Conclusion: "The government can impose any rules they like on their citizens"</p>
+                </div>
+              </div>
+            </div>
+
+      </div>
+    <div class="modal fade" id="correlation" >
+
+            <div class="modal-dialog" >
+              <div class="modal-content">
+                <div class="modal-header">
+
+                  <h5 class="modal-title" >Argument from Correlation to Cause</h5>
+
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <p> Argument from Correlation to Cause is used when we want to know whether one event causes another. How could we tell? </p>
+                    <p> It is structured as the following:</p>
+                    <p> Correlation Premise: "The lack of public restrictions have been seen to increases the number of covid cases"</p>
+                    <p> Conclusion: "Lack of public restrictions cause a higher number of Covid cases" </p>
+
+                </div>
+              </div>
+            </div>
+
+      </div>
+    <div class="modal fade" id="slippery" >
+
+            <div class="modal-dialog" >
+              <div class="modal-content">
+                <div class="modal-header">
+
+                  <h5 class="modal-title" >The Slippery Slope Argument</h5>
+
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <p> The Slippery Slope Argument is used when we want know whether or not to implement some policy or plan </p>
+                    <p> It is structured as the following:</p>
+                    <p> First Step Premise: "You decide to eat Junk food for lunch "</p>
+                    <p> Recursive Premise: "Eating junk food may lead to consuming large amounts of unhealthy food"</p>
+                    <p> Bad Outcome Premise: "Eating Junk food regularly can lead to diabetes"</p>
+                    <p> Conclusion: "You should not eat Junk food"</p>
+                </div>
+              </div>
+            </div>
+
+      </div>
+    <div class="modal fade" id="sign" >
+
+            <div class="modal-dialog" >
+              <div class="modal-content">
+                <div class="modal-header">
+
+                  <h5 class="modal-title" >Argument from Sign </h5>
+
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <p> Argument from Sign is used when we to infer what the truth about one fact indicates or mean for the truth of a general hypothesis? </p>
+                    <p> It is structured as the following:</p>
+                    <p> Specific Premise: "A man has received a positive result on his Covid test"</p>
+                    <p> General Premise: "A positive result on the covid test indicates the man has Covid"</p>
+                    <p> Conclusion: "The man probably has Covid"</p>
+                </div>
+              </div>
+            </div>
+
+      </div>
+    <div class="modal fade" id="commitment" >
+
+            <div class="modal-dialog" >
+              <div class="modal-content">
+                <div class="modal-header">
+
+                  <h5 class="modal-title" >Argument from Commitment</h5>
+
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <p> Argument from Commitment is used when we want to understand what we can infer from a person's commitments </p>
+                    <p> It is structured as the following:</p>
+                    <p> Commitment Evidence Premise: "Steven claims to be a Professional Marathon Runner"</p>
+                    <p> Linkage of Commitments Premise: "A Professional Marathon Runner usually believes in keeping fit and healthy"</p>
+                    <p> Conclusion: "Steven Probably believes in keeping fit and healthy"</p>
+                </div>
+              </div>
+            </div>
+
+      </div>
+ <div class="modal fade" id="inconsistent" >
+
+            <div class="modal-dialog" >
+              <div class="modal-content">
+                <div class="modal-header">
+
+                  <h5 class="modal-title" >Argument from Inconsistent Commitment </h5>
+
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <p> Argument from Inconsistent Commitment is used when one wants to know if a person's commitments can be incompatible  </p>
+                    <p> It is structured as the following:</p>
+                    <p> Initial Commitment Premise: "Sarah claims that she is Pro-Life"</p>
+                    <p> Opposed Commitment Premise: "Sarah recently had an abortion"</p>
+                    <p> Conclusion: "Sarah's prior supporting commitments is conflicting with his initial commitment premise "</p>
+                </div>
+              </div>
+            </div>
+
+      </div>
+ <div class="modal fade" id="directad" >
+
+            <div class="modal-dialog" >
+              <div class="modal-content">
+                <div class="modal-header">
+
+                  <h5 class="modal-title" >DirectAD Hominem Argument</h5>
+
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <p> DirectAd Hominem Argument is used when we want to find out if a person's character affects the validity of their argument. </p>
+                    <p> It is structured as the following:</p>
+                    <p> Character Attack Premise: "Trump often cited incorrect and made up facts"</p>
+                    <p> Conclusion: "Trumps statements where he quoted facts should not be accepted"</p>
+                </div>
+              </div>
+            </div>
+
+      </div>
+ <div class="modal fade" id="circumstantial" >
+
+            <div class="modal-dialog" >
+              <div class="modal-content">
+                <div class="modal-header">
+
+                  <h5 class="modal-title" >Circumstantial Ad Hominem</h5>
+
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <p> Circumstantial Ad Hominem is used when we to know if we can undermine a person's argument by using circumstantial ad hominems?</p>
+                    <p> It is structured as the following:</p>
+                    <p> Argument Premise: "Boris Johnson publicly spoke about marriage and how one should be committed and not break the oath made between one another"</p>
+                    <p> Inconsistent Commitment Premise: "Evidence emerges that Boris Johnson had cheated on his wife"</p>
+                    <p> Credibility Questioning Premise: "Boris Johnsons statements regarding marriage are now undermined due to his actions"</p>
+                    <p> Conclusion: "We can safely ignore Boris Johnsons statements regarding marriage"</p>
+                </div>
+              </div>
+            </div>
+
+      </div>
+ <div class="modal fade" id="verbalclass" >
+
+            <div class="modal-dialog" >
+              <div class="modal-content">
+                <div class="modal-header">
+
+                  <h5 class="modal-title" >Argument from Verbal Classification</h5>
+
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <p> Argument from Verbal Classification is used to infer what we can deduce from the fact that something belongs to a general class of objects </p>
+                    <p> It is structured as the following:</p>
+                    <p> Individual Premise: "Mark has blue eyes"</p>
+                    <p> Classification Premise: "People who have blue eyes would never were colored contact lenses"</p>
+                    <p> Conclusion: "Mark would never wear colored contact lenses"</p>
+                </div>
+              </div>
+            </div>
+
+      </div>
+
+
+<!-- Scripts for functionality -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <hr class="mt-5">
+
+
+
+
+<script>
+
+$(function() {
+// JS hover functionality
+  $('[data-toggle="modal"]').hover(function() {
+    var modalId = $(this).data('target');
+    $(modalId).modal('show');
+
+  });
+
+});
+</script>
+{% endblock content %}
+

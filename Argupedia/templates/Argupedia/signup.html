@@ -1,0 +1,17 @@
+{% extends "Argupedia/base.html" %}
+ <!--loads the crispy forms tags that will contribute to the presentation-->
+{% load crispy_forms_tags %}
+{% block content %}
+ <!--design used to ensure the neatness of the signup form-->
+   <div class="buff">
+        <!--POST request sent -->
+       <form method="POST">
+            <!--csrf token as required by django and for securty measures-->
+            {% csrf_token %}
+            <!--loads the cripsy form tag-->
+               {{ form|crispy }}
+            <!--specifies the design of the button-->
+               <button class="btn btn-outline-danger" type="submit">Sign Up</button>
+       </form>
+   </div>
+{% endblock %}

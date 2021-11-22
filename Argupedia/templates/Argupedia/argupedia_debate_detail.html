@@ -1,0 +1,134 @@
+{% extends 'Argupedia/base.html' %}
+{% block content %}
+<!-- Font, Size and Color detailing the title information -->
+<!-- Information entered for User functionality and ease of Use -->
+<font face=" Impact " size="10px" color="#D02A06"> Enter Argument</font>
+<button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal" style="margin-left: 50px;">?</button>
+<b> <p> Construct your argument by entering information within the relevant
+    fields, If you need assistance on how to construct the Argument please see
+    the relevant information associated in the about page,  view the example
+        already written in the input fields or Consult the Guidance tab located
+    on the sidepanel and view the video associated with it.</p></b>
+
+<!-- For Loop, looping through Argument Fields displaying the unique fields
+ relevant to each scheme -->
+
+
+<!--- Post method used for the argscheme--->
+<form action="{% url 'debate-construct' pk=argsch %}" method="POST">
+{% csrf_token %}
+    <!--- title to be entered --->
+<label >Topic Title:</label>
+<div >
+    <!--- displays the name and id of the box and the characters associated with it --->
+    <input name='debate' id="debate" class="buff" maxlength="255" style="width:500px"  placeholder="Debate Title"required>
+     <div id="debate-remaining-chars" >255 characters remaining</div>
+</div>
+<div  >
+     <select class="media buff" name='cat' id="cat">
+<!-- Begins block content -->
+        <!-- loops over the critical questions and displays them to the user -->
+        {% for cq in cat %}
+        {% if cqs == "" %}
+        <a></a>
+        {% else %}
+            <option value="{{cq.id}}">{{cq.cat}} </option>
+        {% endif %}
+        {% endfor %}
+    </select>
+</div>
+<script>
+for Arg in Args {
+   test = Argument_Fields.objects.filter(Argument_name_field=id)
+}
+</script>
+    <!-- for loops over the field name associated with the argument selected -->
+{% for Arg in Args %}
+<p> {{ Arg.Argument_field_name}}</p>
+    <!-- Gets the users who published them -->
+    {{ Arg.request.user.username}}
+    <!-- specifies each field name with a text box name and id, with max length -->
+    <textarea class="media buff"
+              rows="10"    name="{{ Arg.Argument_field_name}}" id="{{ Arg.Argument_field_name}}"
+              placeholder="{{ Arg.Argument_field }}" maxlength="255" required></textarea>
+
+    <div id="Arg.construct-remaining-chars" >255 characters remaining</div>
+
+   <script>
+       // JS functionality for character limitation, gets the name and id of text field
+      const debate = document.getElementById('debate');
+      const charsleft = document.getElementById("debate-remaining-chars");
+      const construct = document.getElementById("{{ Arg.Argument_field_name}}");
+      const charslefts = document.getElementById("Arg.construct-remaining-chars");
+
+    // character limit
+      const MAX_CHARS = 255;
+    // event listner input
+      debate.addEventListener('input',() => {
+    // subtracts the total characters from the amount inputted
+      const left = MAX_CHARS - debate.value.length;
+      // turns red when 20 percent characters remaining
+      const style = left < MAX_CHARS * 0.2 ? 'crimson' : null;
+
+      charsleft.textContent = `${left} characters remaining`;
+      charsleft.style.color = style;
+
+      });
+
+      construct.addEventListener('input',() => {
+
+      const lefts = MAX_CHARS - construct.value.length;
+      const styles = lefts < MAX_CHARS * 0.2 ? 'crimson' : null;
+
+      charslefts.textContent = `${lefts} characters remaining`;
+      charslefts.style.color = styles
+      });
+
+  </script>
+
+{% endfor %}
+
+ <div class="row justify-content-center">
+     <!-- Submit button styled-->
+     <button class="btn btn-outline-danger" type="submit">Submit </button>
+ </div>
+
+</form>
+
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog">
+            <!-- modal content-->
+            <div class="modal-content">
+                <!-- modal header-->
+                <div class="modal-header">
+                    <!-- modal header-->
+                    <h2 class="modal-title">Debate Creation!</h2>
+                    <!-- close modal-->
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span>X</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- modal information-->
+                    <p>Here you can create your debate, please ensure you fill in all the fields, each field is limited to 255 characters. If you have trouble please see the placeholder text as an example.</p>
+                    <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+<!-- scripts -->
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+
+{% endblock %}
+
+

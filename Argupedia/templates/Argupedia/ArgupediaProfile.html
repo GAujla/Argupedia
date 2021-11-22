@@ -1,0 +1,26 @@
+{% extends "Argupedia/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+         <!-- Displays the users profile picture-->
+        <img class="rounded-circle" src="{{ user.argprofile.pict.url }}" width="125px" height="125px" style="margin-right: 20px; margin-bottom: 16px;">
+            <!-- Displays the user's username -->
+          <font  size="10px" style="margin-top: 30px">{{ user.username }}</font>
+
+        <!-- POST reuqest for changes the user wants to make on their profile-->
+<!-- mutlipart/formdata used to change the image-->
+      <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+          <!-- promotes the changes using the crispy form tag-->
+               {{ change|crispy }}
+               {{ changepro|crispy }}
+               {{ changefield|crispy }}
+          <!-- Defines the submit change button-->
+               <button class="btn btn-outline-danger" style="margin-top: 10px" type="submit">Change</button>
+          <!-- ur link for the password change button-->
+               <a href="{% url 'password_reset' %}"  class="btn btn btn-outline-danger" style="margin-top: 10px">Reset Password</a>
+
+
+       </form>
+
+{% endblock %}

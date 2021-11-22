@@ -1,0 +1,142 @@
+{% extends "Argupedia/base.html" %}
+{% block content %}
+{% load crispy_forms_tags %}
+
+<!-- Medium Class prefix-->
+       <font face=" Impact " size="10px" color="#D02A06" > Contact Information</font>
+            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal" style="margin-left: 295px">?</button>
+<div class="col-md-15">
+    <!-- Specifying content-section-->
+    <div class="buff">
+        <!--information entered -->
+
+        <p>If you have any concenrs or queries regarding Argupedia
+            please do not hesistate to contact myself or Sanjay Modgil at:</p>
+        <p>Gurpreet.Aujla@kcl.ac.uk</p>
+        <p >Sanjay.Modgil@kcl.ac.uk</p>
+        <!-- Displays links that can be accessed within web page-->
+        <!-- https://www.w3schools.com/html/html_links.asp learnt how to navigate other web links-->
+      <p> Or if you wish you can fill out the form below and we will reply to you at our earliest convenience</p>
+        </p>
+        <!--modal id uses fade functionality-->
+            <div class="modal fade" id="myModal">
+        <div class="modal-dialog">
+            <!--modal content-->
+            <div class="modal-content">
+                <!--modal header-->
+                <div class="modal-header">
+                    <!--modal header-->
+                    <h2 class="modal-title">Contact Page!</h2>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span>X</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!--modal information-->
+                    <p>This page details a form for the Users to fill in.</p>
+                    <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+<!-- Medium Class prefix-->
+
+  <form METHOD="post">
+    {% csrf_token %}
+      <!--255 character limit for box associated with Name field-->
+    <div class="form-group">
+      <label for="subject" class="col-form-label-lg">Name:</label>
+        <!--specifies id, name and max length-->
+       <textarea name='name' id="name" class="form-control" maxlength="255" required></textarea>
+        <div id="name-remaining-chars" >255 characters remaining</div>
+    </div>
+    <div class="form-group">
+        <!--255 character limit for box associated with Email field-->
+     <label for="subject" class="col-form-label-lg">Email:</label>
+        <!--specifies id, name and max length-->
+      <textarea name='email' id="email" class="form-control" maxlength="255" required></textarea>
+        <div id="email-remaining-chars" >255 characters remaining</div>
+    </div>
+    <div class="form-group">
+        <!--255 character limit for box associated with your query field-->
+      <label for="subject" class="col-form-label-lg">Your Query:</label>
+        <!--specifies id, name and max length-->
+      <textarea name='subject' id="subject" class="form-control" maxlength="255" required></textarea>
+        <div id="subject-remaining-chars" >255 characters remaining</div>
+    </div>
+    <div class="col-auto">
+        <!--button customisation-->
+      <button type="submit" class="btn btn-danger ">Submit</button>
+    </div>
+       <script>
+           // JS functionality getting the name and id of the boxes
+          const name = document.getElementById('name');
+          const charsleft = document.getElementById("name-remaining-chars");
+          const email = document.getElementById('email');
+          const charslefts = document.getElementById("email-remaining-chars");
+          const subject = document.getElementById('subject');
+          const charlefts = document.getElementById("subject-remaining-chars");
+// defines the max number of characters
+          const MAX_CHARS = 255;
+// defines the input listner event for characters
+          name.addEventListener('input',() => {
+// takes away for every character entered
+          const left = MAX_CHARS - name.value.length;
+          // warning when 20 percent characters are left
+          const style = left < MAX_CHARS * 0.2 ? 'crimson' : null;
+
+          charsleft.textContent = `${left} characters remaining`;
+          charsleft.style.color = style;
+
+          });
+          // defines the input listner event for characters
+          email.addEventListener('input',() => {
+        // takes away for every character entered
+          const lefts = MAX_CHARS - email.value.length;
+
+        // warning when 20 percent characters are left
+          const styles = lefts < MAX_CHARS * 0.2 ? 'crimson' : null;
+
+          charslefts.textContent = `${lefts} characters remaining`;
+          charslefts.style.color = styles
+
+          });
+           // defines the input listner event for characters
+          subject.addEventListener('input',() => {
+
+           // takes away for every character entered
+          const rem = MAX_CHARS - subject.value.length;
+           // warning when 20 percent characters are left
+          const sty = rem < MAX_CHARS * 0.2 ? 'crimson' : null;
+
+          charlefts.textContent = `${rem} characters remaining`;
+          charlefts.style.color = sty
+          });
+
+
+      </script>
+  </form>
+    </div>
+</div>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+{% endblock content %}
+
+

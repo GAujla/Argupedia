@@ -1,0 +1,258 @@
+{% extends 'Argupedia/base.html' %}
+
+{% block content %}
+    {% load static %}
+
+
+<font face=" Impact " size="10px" color="#D02A06" > Grounded Semantics</font>
+
+
+<div class="buff">
+    <!-- Defines the winning arguments-->
+        Argument ID's that are  winning are:
+        {% for winners in winning%}
+            Argument id:{{ winners }}
+        {% endfor %}
+</div>
+<div class="buff">
+     <!-- Defines the losing arguments-->
+        Argument ID's that are  Losing  are:
+        {% for losers in losing %}
+            Argument id:{{ losers }}
+        {% endfor %}
+</div>
+<div class="buff">
+Hover over the argument nods to view the Argument ID associated with it. Then look back at the Argument detail page to see the ID from then you can tell by the color coordination which Arguments and winning, losing and undecided
+    Green = Winning, Red = losing, grey = undecided
+</div>
+
+    <script src="https://d3js.org/d3.v4.min.js" type="text/javascript"></script>
+
+
+    <div class="container" style="height: 650px; width: 1000px;">
+        <svg width="1000" height="1000"></svg>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.min.js"></script>
+
+
+        <style>
+
+        </style>
+        <script type="text/javascript">
+            // defines the space of where the nodes will be appended into.
+            var width = 650,
+
+                height = 480;
+             // Specifies the links between the arguments
+            var  relation= [
+                 // Loops through all the arguments for the debate
+                    {% for argument in args %}
+                        {% if not argument.parent == null %}
+             // Assigns the source node and target node which will be the links
+                            {source: {{ argument.id }}, target: {{ argument.parent.id }}},
+                        {% endif %}
+                    {% endfor %}
+
+
+                ];
+
+             // Specifies the nodes and the color schemee
+            var debate = [
+                    {% for argument in  args %}
+                        {id: {{argument.id}}, argument: '{{argument.id}}',  type:
+                            //defines arguments as losing to be red
+                            {% if argument.id in losing %}"#fc0516"
+                            //defines arguments as winning to be green
+                            {% elif argument.id in winning %}"#00cf0a"
+                                //grey for undecided arguments
+                            {% else %}"#616060"
+                            {% endif %}},
+
+                    {% endfor %}
+
+
+                ];
+
+            //https://github.com/caged/d3-tip
+            //On hover function
+            var show = d3.tip().attr('class', 'd3-tip').html(function(d) { return d; });
+
+            var svg = d3.select("svg")
+                //defines the width
+                .attr('width',width)
+                //defines the height
+                .attr('height',height)
+                r = 50;
+                simulation = d3.forceSimulation()
+                    //https://www.d3indepth.com/force-layout/
+                    // forces the simulation x coordinates
+                    .force("x", d3.forceX(width/2))
+                     // forces the simulation y coordinates
+                    .force("y", d3.forceX(height/2))
+                     // forces the collide structure
+                    .force("collide", d3.forceCollide(r+1))
+                     // forces the charge strength how close/far
+                    .force("charge", d3.forceManyBody()
+                    .strength(-900))
+                    .force("link", d3.forceLink()
+                        .id(function (d) { return d.id;}))
+                    //https://www.d3indepth.com/force-layout/
+                     // forces it centre
+                    .force("center", d3.forceCenter(width / 2, height / 2))
+                    .on("tick", generate);
+            svg.call(show);
+
+
+
+            debate.forEach(function (d){
+                //Positioning
+                    d.x = Math.random() * width;
+                    //position for width
+                    d.y = Math.random() * height;
+                    // position for height
+                 })
+
+            simulation.nodes(debate)
+            //forces the link
+            simulation.force("link")
+                // forces the link relationship
+                .links(relation)
+
+
+
+            // function generate consists of functionality for the arguments
+            // and links that will be updated
+            function generate() {
+
+
+
+                simulation.nodes(debate)
+                    // defines the arguments in the tick function
+                    .on("tick", tick);
+
+                arg = svg.selectAll(".arg")
+                    // gets the argumetns
+                    .attr("class", "arg")
+                    //attribute links class to args
+                    .data(debate)
+                    // data for the arguments
+                    .enter()
+                    // creates inital join of data elements
+                    //http://tutorials.jenkov.com/svg/g-element.html
+                    .append("g")
+
+
+                    .on('mouseover', function (d) {show.html(d.argument);show.show();})
+                    // detial the mouseover event and hide event
+
+                    .call(d3.drag()
+                        // details the dragging event
+                        .subject(dragsubject)
+                        .on("start",dragstarted)
+                        // links the start of the dragging function
+                        .on("drag", dragged)
+                        // links to the dragging process
+                        .on("end", dragended),
+                        // links to the end of the dragging function
+
+
+                connect = svg.selectAll(".link")
+                    // relationship links
+                    .data(relation)
+                    // generates the data links between the nodes
+                    .enter()
+                    // creates inital join of data elements
+                    .append("line")
+                    // appends the line to generate the link
+                    .attr("class", "link")
+
+
+                    );
+
+                arg.append("circle")
+                    // circle shape for the arguments
+                    //https://stackoverflow.com/questions/45235309/d3js-append-circle-to-force-directed-layout
+                    .attr("r", 20)
+                    // defines the radius of the nodes
+                    .style("fill", function(d) {
+                      if (d.type) {return d.type;}
+                      else  { return "#fff"; }
+                      // defines the color styling of the nodes
+                   });
+
+            }
+            function tick(e) {
+                    // defines the nodes attributes
+                // states the layout when things have changed
+                arg.attr('cx', function(d) { return d.x;})
+                    // specify the node the cx, the relative x position
+                    .attr('cy', function(d) { return d.y;})
+                     // specify the node the cy, the relative y position
+                    .attr("transform", function (d) {return "translate(" + d.x + " " + d.y + ")";});
+
+
+                    // defines the links associate with each of the sources
+                // the links are a line and has x and y
+                    connect.attr("x1", function (d) {return d.source.x;})
+                    // x1 function to connect and return the source x
+                    .attr("x2", function (d) {return d.target.x;})
+                    // x2 function to connect and return the source x
+                    .attr("y1", function (d) {return d.source.y;})
+                     // y2 function to connect and return the source y
+                    .attr("y2", function (d) {return d.target.y;});
+                     // y2 function to connect and return the source y
+
+
+
+
+            }
+                function dragsubject() {
+               // used for dragging functionality
+                    return simulation.find(d3.event.x, d3.event.y)
+    }
+                //Future plans for code to help improve the stylistic
+                function drawNode(d) {
+                ctx.beginPath();
+                ctx.fillStyle = color(d.colors);
+                ctx.moveTo(d.x, d.y);
+                ctx.arc(d.x, d.y, r, 0, 2* Math.PI);
+                ctx.fill();
+
+
+            }
+            function drawLink(l) {
+                //Future plans for code to help improve the stylistic
+                ctx.moveTo(l.source.x, l.source.y);
+                ctx.lineTo(l.target.x, l.target.y);
+
+            }
+
+        function dragstarted() {
+                // conducts the dragging start event
+            if (!d3.event.active) simulation.alphaTarget(0.6).restart();
+            // links the coordinates
+            d3.event.subject.fx = d3.event.subject.x;
+             // links the dragging function to the coordinates
+            d3.event.subject.fy = d3.event.subject.y;
+            // links the dragging function to the coordinates
+            console.log(d3.event.subject)
+            // displays the function being dragged in the console
+        }
+        function dragged() {
+                // details the dragging functionality during the process
+            d3.event.subject.fx = d3.event.x;
+            d3.event.subject.fy = d3.event.y;
+        }
+        function dragended() {
+                // ends the dragging event
+            if (!d3.event.active) simulation.alphaTarget(0);
+            d3.event.subject.fx = null;
+            d3.event.subject.fy = null;
+
+
+        }
+
+        </script>
+    </div>
+
+{% endblock %}

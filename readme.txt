@@ -1,15 +1,3 @@
-To run the Argupedia project please ensure that all the files generated in the requirements.txt files have been downloaded. If not this can impact the functionality and view of the application.
-
-Folder Layout:
-Models
-URLS
-Views
-Templates
-Static
-URLS (admin, signup and password reset functionality)
-
-
-
 Please ensure that you run the project in a virtual environment on your machine.
 
 

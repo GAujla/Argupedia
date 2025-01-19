@@ -1,17 +1,2 @@
-Please ensure that you run the project in a virtual environment on your machine.
-
-
-
-
-To run the project please first create a virtual environment, then navigate to the project  file.  Ensure the requirements have been downloaded by doing 
-
-pip install -r requirements.txt
-
-The run the project:
-
-python3 manage.py runserver.
-
-
-The argument schemes and critical questions used can be found here
-https://philosophicaldisquisitions.blogspot.com/2010/03/argumentation-schemes-part-1.html
-https://philosophicaldisquisitions.blogspot.com/2010/03/argumentation-schemes-part-2.html
+# Argupedia
+Argupedia, is a web-based debate platform enabling users to create and engage in discussions across diverse subjects. Built on a Django backend, the platform leverages Dung's grounded semantics algorithm to evaluate and identify winning arguments. The overarching goal of this project is that one day it can act as a dataset that could train AI agents to analyse arguments, draw conclusions, and determine optimal actions in various environments based on the insights gathered. The argument schemes and critical questions the application makes use of can be found here The argument schemes and critical questions used can be found here (https://philosophicaldisquisitions.blogspot.com/2010/03/argumentation-schemes-part-1.html), (https://philosophicaldisquisitions.blogspot.com/2010/03/argumentation-schemes-part-2.htm).

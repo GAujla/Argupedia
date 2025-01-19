@@ -6,7 +6,7 @@ Argupedia, is a web-based debate platform enabling users to create and engage in
 Use the following command to clone the respository:
 ```bash
 cd your/repo/directory
-git clone [https://github.com/edgorman/Property-Fundamentals](https://github.com/GAujla/Argupedia.git)
+git clone https://github.com/GAujla/Argupedia.git
 ```
 
 Create your virtual environment:
